@@ -1,0 +1,277 @@
+.container {
+  padding: 20rpx;
+  padding-bottom: 200rpx;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 24rpx 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-left, .header-center, .header-right {
+  flex: 1;
+  text-align: center;
+}
+
+.timer, .moves, .score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-icon, .moves-icon, .score-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.timer-text, .moves-text, .score-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #374151;
+}
+
+.score-text {
+  color: #f59e0b;
+}
+
+.game-board {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  box-shadow: 0 12rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.card-grid {
+  display: grid;
+  gap: 16rpx;
+}
+
+.card-item {
+  aspect-ratio: 1;
+  perspective: 1000rpx;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-inner.matched {
+  animation: matchPulse 0.5s ease;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 8rpx 20rpx rgba(99, 102, 241, 0.4);
+}
+
+.card-icon {
+  font-size: 48rpx;
+  color: #ffffff;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  transform: rotateY(180deg);
+}
+
+.card-emoji {
+  font-size: 56rpx;
+}
+
+.card-inner.matched .card-front {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.card-inner.matched .card-emoji {
+  animation: bounce 0.5s ease;
+}
+
+.game-controls {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 30rpx;
+}
+
+.control-btn {
+  flex: 1;
+  height: 96rpx;
+  border: none;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.control-btn:active {
+  transform: scale(0.98);
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 8rpx 20rpx rgba(99, 102, 241, 0.4);
+}
+
+.hint-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.btn-text {
+  font-size: 28rpx;
+}
+
+.game-over-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  width: 85%;
+  max-width: 600rpx;
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 48rpx;
+  text-align: center;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 32rpx;
+}
+
+.modal-stats {
+  background: #f9fafb;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #e5e7eb;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-size: 28rpx;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #6366f1;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 88rpx;
+  border: none;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.modal-btn.primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+}
+
+.modal-btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+@keyframes matchPulse {
+  0%, 100% {
+    transform: rotateY(180deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40rpx);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

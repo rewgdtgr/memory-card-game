@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="rank-header">
+    <view class="header-title">🏆 排行榜</view>
+    <view class="header-subtitle">记录你的最佳成绩</view>
+  </view>
+
+  <view class="stats-summary">
+    <view class="summary-card">
+      <view class="summary-icon">⭐</view>
+      <view class="summary-content">
+        <view class="summary-label">最高分</view>
+        <view class="summary-value">{{bestScore}}</view>
+      </view>
+    </view>
+    <view class="summary-card">
+      <view class="summary-icon">🎮</view>
+      <view class="summary-content">
+        <view class="summary-label">游戏次数</view>
+        <view class="summary-value">{{playCount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="rank-section">
+    <view class="section-title">
+      <text class="title-icon">📊</text>
+      <text>历史记录</text>
+    </view>
+
+    <view wx:if="{{history.length === 0}}" class="empty-state">
+      <text class="empty-icon">🎯</text>
+      <text class="empty-text">还没有游戏记录</text>
+      <text class="empty-hint">快去游戏页面开始挑战吧！</text>
+    </view>
+
+    <view wx:else class="rank-list">
+      <view 
+        wx:for="{{history}}" 
+        wx:key="index"
+        class="rank-item"
+      >
+        <view class="rank-position">
+          <view class="position-badge" :class="getRankClass(index)">
+            <text>{{index + 1}}</text>
+          </view>
+        </view>
+        <view class="rank-info">
+          <view class="rank-row">
+            <text class="rank-label">用时</text>
+            <text class="rank-value">{{item.time}}</text>
+          </view>
+          <view class="rank-row">
+            <text class="rank-label">步数</text>
+            <text class="rank-value">{{item.moves}} 次</text>
+          </view>
+        </view>
+        <view class="rank-score">
+          <text class="score-number">{{item.score}}</text>
+          <text class="score-unit">分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tips-section">
+    <view class="tips-title">💡 游戏小贴士</view>
+    <view class="tips-list">
+      <view class="tip-item">
+        <text class="tip-icon">1️⃣</text>
+        <text class="tip-text">记住卡片位置，减少不必要的翻转</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">2️⃣</text>
+        <text class="tip-text">快速完成可以获得额外时间奖励</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">3️⃣</text>
+        <text class="tip-text">使用提示功能会扣除少量分数</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">4️⃣</text>
+        <text class="tip-text">难度越高，得分潜力越大</text>
+      </view>
+    </view>
+  </view>
+</view>

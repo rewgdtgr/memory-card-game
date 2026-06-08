@@ -1,0 +1,91 @@
+<view class="container">
+  <view class="hero-section">
+    <view class="logo">
+      <text class="logo-text">🎴</text>
+    </view>
+    <view class="hero-title">记忆翻牌游戏</view>
+    <view class="hero-subtitle">锻炼你的记忆力，挑战最高分数！</view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stats-grid">
+      <view class="stat-item">
+        <view class="stat-icon">🏆</view>
+        <view class="stat-value">{{bestScore}}</view>
+        <view class="stat-label">最高分</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-icon">🎮</view>
+        <view class="stat-value">{{playCount}}</view>
+        <view class="stat-label">游戏次数</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-icon">⏱️</view>
+        <view class="stat-value">{{bestTime}}</view>
+        <view class="stat-label">最佳时间</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="game-intro">
+    <view class="intro-title">游戏规则</view>
+    <view class="intro-content">
+      <view class="rule-item">
+        <text class="rule-number">1</text>
+        <text class="rule-text">点击卡片翻转查看图案</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-number">2</text>
+        <text class="rule-text">每次翻开两张卡片进行配对</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-number">3</text>
+        <text class="rule-text">两张相同图案的卡片配对成功</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-number">4</text>
+        <text class="rule-text">找出所有配对即可获胜</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="difficulty-section">
+    <view class="section-title">选择难度</view>
+    <view class="difficulty-grid">
+      <view 
+        class="difficulty-item {{difficulty === 'easy' ? 'active' : ''}}"
+        bindtap="setDifficulty"
+        data-level="easy"
+      >
+        <text class="diff-icon">😊</text>
+        <text class="diff-name">简单</text>
+        <text class="diff-desc">4×3 共12张</text>
+      </view>
+      <view 
+        class="difficulty-item {{difficulty === 'medium' ? 'active' : ''}}"
+        bindtap="setDifficulty"
+        data-level="medium"
+      >
+        <text class="diff-icon">😐</text>
+        <text class="diff-name">中等</text>
+        <text class="diff-desc">4×4 共16张</text>
+      </view>
+      <view 
+        class="difficulty-item {{difficulty === 'hard' ? 'active' : ''}}"
+        bindtap="setDifficulty"
+        data-level="hard"
+      >
+        <text class="diff-icon">😈</text>
+        <text class="diff-name">困难</text>
+        <text class="diff-desc">6×4 共24张</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="start-btn-wrap">
+    <button class="start-btn" bindtap="startGame">
+      <text class="btn-icon">🎮</text>
+      <text class="btn-text">开始游戏</text>
+    </button>
+  </view>
+</view>

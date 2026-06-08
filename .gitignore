@@ -1,0 +1,28 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Installer
+*.exe
+
+# Node modules
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Build
+dist/

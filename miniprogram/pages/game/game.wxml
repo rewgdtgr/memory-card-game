@@ -1,0 +1,87 @@
+<view class="container">
+  <view class="game-header">
+    <view class="header-left">
+      <view class="timer">
+        <text class="timer-icon">⏱️</text>
+        <text class="timer-text">{{formatTime(timer)}}</text>
+      </view>
+    </view>
+    <view class="header-center">
+      <view class="moves">
+        <text class="moves-icon">👆</text>
+        <text class="moves-text">{{moves}} 次</text>
+      </view>
+    </view>
+    <view class="header-right">
+      <view class="score">
+        <text class="score-icon">⭐</text>
+        <text class="score-text">{{score}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="game-board">
+    <view 
+      class="card-grid"
+      style="grid-template-columns: repeat({{cols}}, 1fr);"
+    >
+      <view 
+        wx:for="{{cards}}" 
+        wx:key="id"
+        class="card-item"
+        bindtap="flipCard"
+        data-index="{{index}}"
+      >
+        <view 
+          class="card-inner {{card.flipped || card.matched ? 'flipped' : ''}} {{card.matched ? 'matched' : ''}}"
+        >
+          <view class="card-face card-back">
+            <text class="card-icon">❓</text>
+          </view>
+          <view class="card-face card-front">
+            <text class="card-emoji">{{card.emoji}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="game-controls">
+    <button class="control-btn restart-btn" bindtap="restartGame">
+      <text class="btn-icon">🔄</text>
+      <text class="btn-text">重新开始</text>
+    </button>
+    <button class="control-btn hint-btn" bindtap="showHint">
+      <text class="btn-icon">💡</text>
+      <text class="btn-text">提示</text>
+    </button>
+  </view>
+
+  <view wx:if="{{gameOver}}" class="game-over-modal">
+    <view class="modal-content">
+      <view class="modal-title">🎉 恭喜完成！</view>
+      <view class="modal-stats">
+        <view class="stat-row">
+          <text class="stat-label">用时</text>
+          <text class="stat-value">{{formatTime(finalTime)}}</text>
+        </view>
+        <view class="stat-row">
+          <text class="stat-label">步数</text>
+          <text class="stat-value">{{moves}} 次</text>
+        </view>
+        <view class="stat-row">
+          <text class="stat-label">得分</text>
+          <text class="stat-value">{{score}} 分</text>
+        </view>
+      </view>
+      <view class="modal-actions">
+        <button class="modal-btn primary" bindtap="saveScore">
+          <text>保存成绩</text>
+        </button>
+        <button class="modal-btn secondary" bindtap="restartGame">
+          <text>再来一局</text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
