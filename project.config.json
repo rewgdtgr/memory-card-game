@@ -77,8 +77,9 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "envList": [
-    "dev-xxxxx"
+    "cloud1-d7gyra0pbafd553fa"
   ],
   "simulatorPluginLibVersion": {},
-  "editorSetting": {}
+  "editorSetting": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

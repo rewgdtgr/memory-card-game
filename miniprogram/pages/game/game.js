@@ -190,6 +190,43 @@ Page({
     }
 
     wx.setStorageSync('gameStats', stats)
+    
+    this.saveScoreToLocalHistory()
+    this.saveScoreToCloud()
+  },
+  
+  saveScoreToLocalHistory: function () {
+    const difficulty = wx.getStorageSync('difficulty') || 'easy'
+    const history = wx.getStorageSync('gameHistory') || []
+    
+    history.push({
+      score: this.data.score,
+      moves: this.data.moves,
+      time: this.data.timer,
+      difficulty: difficulty
+    })
+    
+    wx.setStorageSync('gameHistory', history)
+  },
+  
+  saveScoreToCloud: function () {
+    const difficulty = wx.getStorageSync('difficulty') || 'easy'
+    
+    wx.cloud.callFunction({
+      name: 'saveScore',
+      data: {
+        score: this.data.score,
+        moves: this.data.moves,
+        time: this.data.timer,
+        difficulty: difficulty
+      },
+      success: (res) => {
+        console.log('分数保存到云数据库成功', res)
+      },
+      fail: (err) => {
+        console.error('分数保存到云数据库失败', err)
+      }
+    })
   },
 
   startTimer: function () {

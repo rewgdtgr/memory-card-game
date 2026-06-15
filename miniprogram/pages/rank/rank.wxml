@@ -40,18 +40,22 @@
         class="rank-item"
       >
         <view class="rank-position">
-          <view class="position-badge" :class="getRankClass(index)">
+          <view class="position-badge {{getRankClass(index)}}">
             <text>{{index + 1}}</text>
           </view>
         </view>
         <view class="rank-info">
           <view class="rank-row">
             <text class="rank-label">用时</text>
-            <text class="rank-value">{{item.time}}</text>
+            <text class="rank-value">{{formatTime(item.time)}}</text>
           </view>
           <view class="rank-row">
             <text class="rank-label">步数</text>
             <text class="rank-value">{{item.moves}} 次</text>
+          </view>
+          <view class="rank-row">
+            <text class="rank-label">难度</text>
+            <text class="rank-value">{{getDifficultyText(item.difficulty)}}</text>
           </view>
         </view>
         <view class="rank-score">

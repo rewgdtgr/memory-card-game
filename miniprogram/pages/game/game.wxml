@@ -33,13 +33,13 @@
         data-index="{{index}}"
       >
         <view 
-          class="card-inner {{card.flipped || card.matched ? 'flipped' : ''}} {{card.matched ? 'matched' : ''}}"
+          class="card-inner {{item.flipped || item.matched ? 'flipped' : ''}} {{item.matched ? 'matched' : ''}}"
         >
           <view class="card-face card-back">
             <text class="card-icon">❓</text>
           </view>
           <view class="card-face card-front">
-            <text class="card-emoji">{{card.emoji}}</text>
+            <text class="card-emoji">{{item.emoji}}</text>
           </view>
         </view>
       </view>

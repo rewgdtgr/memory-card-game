@@ -1,6 +1,8 @@
 .container {
   padding: 30rpx;
   padding-bottom: 180rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
 .hero-section {
@@ -144,12 +146,22 @@
   background: #f3f4f6;
   border-radius: 20rpx;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: background, transform;
+}
+
+.difficulty-item:active {
+  opacity: 0.8;
 }
 
 .difficulty-item.active {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   transform: scale(1.05);
+  -webkit-transform: scale(1.05);
 }
 
 .diff-icon {
@@ -193,11 +205,14 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 16rpx 40rpx rgba(16, 185, 129, 0.4);
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .start-btn:active {
   transform: scale(0.98);
+  -webkit-transform: scale(0.98);
   opacity: 0.9;
 }
 
