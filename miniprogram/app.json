@@ -38,5 +38,5 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "cloud": false
+  "cloud": true
 }

@@ -7,9 +7,12 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
+  const { OPENID } = cloud.getWXContext()
+  
   try {
     const result = await db.collection('scores').add({
       data: {
+        openId: OPENID,
         score: event.score,
         moves: event.moves,
         time: event.time,
